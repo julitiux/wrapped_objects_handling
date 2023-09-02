@@ -13,4 +13,12 @@ public interface UserService {
       .build();
   }
 
+  default AddUserResult duplicatedUserResult(final User user) {
+    return AddUserResult.builder()
+      .success(false)
+      .user(user)
+      .errorMessage("The user with username '%s' already exists.".formatted(user.getUsername()))
+      .build();
+  }
+
 }
