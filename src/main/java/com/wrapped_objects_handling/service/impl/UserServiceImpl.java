@@ -18,9 +18,13 @@ public class UserServiceImpl implements UserService {
     return null;
   }
 
-  private AddUserResult internalAddUser(final User user){
+  private AddUserResult internalAddUser(final User user) {
     final var saved = userRepository.save(user);
     return addUserSuccessful(saved);
+  }
+
+  private AddUserResult handleExistingUser(User user) {
+    return duplicatedUserResult(user);
   }
 
 }
