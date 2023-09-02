@@ -17,7 +17,10 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public AddUserResult addUser(User user) {
-    return null;
+    return userRepository
+      .findByUsername(user.getUsername())
+      .map(this::handleExistingUser)
+      .orElseGet(() -> internalAddUser(user));
   }
 
   private AddUserResult internalAddUser(final User user) {
