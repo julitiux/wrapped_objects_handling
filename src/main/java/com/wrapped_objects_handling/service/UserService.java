@@ -5,5 +5,12 @@ import com.wrapped_objects_handling.domain.User;
 public interface UserService {
 
   AddUserResult addUser(final User user);
-  
+
+  default AddUserResult addUserSuccessful(final User saved) {
+    return AddUserResult.builder()
+      .success(true)
+      .user(saved)
+      .build();
+  }
+
 }
