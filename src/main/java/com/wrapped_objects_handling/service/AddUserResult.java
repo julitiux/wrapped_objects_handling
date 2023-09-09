@@ -2,12 +2,14 @@ package com.wrapped_objects_handling.service;
 
 import com.wrapped_objects_handling.domain.User;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Optional;
 
 @Builder
 @Setter
+@Getter
 public class AddUserResult {
 
   @Builder.Default
