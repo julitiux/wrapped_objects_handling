@@ -1,4 +1,4 @@
-CREATE TABLE user
+CREATE TABLE people
 (
     id           uuid           NOT NULL,
     date_created TIMESTAMP      NOT NULL,
