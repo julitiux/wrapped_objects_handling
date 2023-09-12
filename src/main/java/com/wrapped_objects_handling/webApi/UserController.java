@@ -2,12 +2,11 @@ package com.wrapped_objects_handling.webApi;
 
 import com.wrapped_objects_handling.service.UserService;
 import com.wrapped_objects_handling.webApi.domain.AddUserCommand;
+import com.wrapped_objects_handling.webApi.domain.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -23,6 +22,13 @@ public class UserController {
       return new ResponseEntity<>(UserWebApiMapper.of(user), HttpStatus.CREATED);
     }
     return new ResponseEntity<>(result.getErrorMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @GetMapping(value = "/{id}")
+  public ResponseEntity<UserDTO> findById(@PathVariable String id) {
+    return userService.findById(id)
+      .map(user -> new ResponseEntity<>(UserWebApiMapper.of(user), HttpStatus.OK))
+      .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
   }
 
 }
