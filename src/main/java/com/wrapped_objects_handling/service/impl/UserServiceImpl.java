@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,6 +24,12 @@ public class UserServiceImpl implements UserService {
       .findByUsername(user.getUsername())
       .map(this::handleExistingUser)
       .orElseGet(() -> internalAddUser(user));
+  }
+
+  @Override
+  public Optional<User> findById(String id) {
+    var uuid = UUID.fromString(id);
+    return userRepository.findById(uuid);
   }
 
   private AddUserResult internalAddUser(final User user) {
