@@ -2,9 +2,13 @@ package com.wrapped_objects_handling.service;
 
 import com.wrapped_objects_handling.domain.User;
 
+import java.util.Optional;
+
 public interface UserService {
 
   AddUserResult addUser(final User user);
+
+  Optional<User> findById(String id);
 
   default AddUserResult addUserSuccessful(final User saved) {
     return AddUserResult.builder()
