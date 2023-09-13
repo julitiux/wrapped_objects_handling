@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-@Controller("/login")
+@Controller
 public class AuthController {
 
   @Autowired
   private AuthService authService;
 
-  @RequestMapping(value = "/", method = RequestMethod.POST)
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
   public ResponseEntity<Map<String, String>> login(@RequestBody LoginCommand loginCommand) {
     if (authService.login(loginCommand.username(), loginCommand.password()))
       return new ResponseEntity<>(Map.of("authenticated", "true"), HttpStatus.OK);
