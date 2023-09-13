@@ -3,6 +3,7 @@ package com.wrapped_objects_handling.webApi;
 import com.wrapped_objects_handling.service.UserService;
 import com.wrapped_objects_handling.webApi.domain.AddUserCommand;
 import com.wrapped_objects_handling.webApi.domain.UserDTO;
+import com.wrapped_objects_handling.webApi.mapper.UserWebApiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

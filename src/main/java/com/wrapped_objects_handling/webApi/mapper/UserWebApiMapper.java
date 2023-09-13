@@ -1,4 +1,4 @@
-package com.wrapped_objects_handling.webApi;
+package com.wrapped_objects_handling.webApi.mapper;
 
 import com.wrapped_objects_handling.domain.User;
 import com.wrapped_objects_handling.webApi.domain.AddUserCommand;
